@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Assure index{% endblock %}
+
+{% block body %}
+    <h1>Assure index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Tel</th>
+                <th>DateNaissance</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for assure in assures %}
+            <tr>
+                <td>{{ assure.id }}</td>
+                <td>{{ assure.nom }}</td>
+                <td>{{ assure.prenom }}</td>
+                <td>{{ assure.tel }}</td>
+                <td>{{ assure.dateNaissance ? assure.dateNaissance|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_assure_show', {'id': assure.id}) }}">show</a>
+                    <a href="{{ path('app_assure_edit', {'id': assure.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_assure_new') }}">Create new</a>
+{% endblock %}

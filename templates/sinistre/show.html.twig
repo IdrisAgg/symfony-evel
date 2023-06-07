@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sinistre{% endblock %}
+
+{% block body %}
+    <h1>Sinistre</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ sinistre.id }}</td>
+            </tr>
+            <tr>
+                <th>DateDeclaration</th>
+                <td>{{ sinistre.dateDeclaration ? sinistre.dateDeclaration|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>DateExpertise</th>
+                <td>{{ sinistre.dateExpertise ? sinistre.dateExpertise|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>EstimationExpertise</th>
+                <td>{{ sinistre.estimationExpertise }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_sinistre_index') }}">back to list</a>
+
+    <a href="{{ path('app_sinistre_edit', {'id': sinistre.id}) }}">edit</a>
+
+    {{ include('sinistre/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sinistre index{% endblock %}
+
+{% block body %}
+    <h1>Sinistre index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>DateDeclaration</th>
+                <th>DateExpertise</th>
+                <th>EstimationExpertise</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for sinistre in sinistres %}
+            <tr>
+                <td>{{ sinistre.id }}</td>
+                <td>{{ sinistre.dateDeclaration ? sinistre.dateDeclaration|date('Y-m-d') : '' }}</td>
+                <td>{{ sinistre.dateExpertise ? sinistre.dateExpertise|date('Y-m-d') : '' }}</td>
+                <td>{{ sinistre.estimationExpertise }}</td>
+                <td>
+                    <a href="{{ path('app_sinistre_show', {'id': sinistre.id}) }}">show</a>
+                    <a href="{{ path('app_sinistre_edit', {'id': sinistre.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_sinistre_new') }}">Create new</a>
+{% endblock %}

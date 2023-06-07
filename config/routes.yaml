@@ -1,0 +1,18 @@
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
+
+
+accueil:
+    path: /accueil/{nom}
+    controller: App\Controller\AssureController::accueil
+    requirements:
+        nom: "Idris"
+
+
+addAssure:
+    path: /ajoutAssure
+    controller: App\Controller\AssureController::addAssure
+
